@@ -1,4 +1,4 @@
-// Start writing JavaScript here!
+// Import HTML Elements
 const carousel = document.querySelector(".carousel");
 const prevButton = carousel.querySelector(".previous-button");
 const nextButton = carousel.querySelector(".next-button");
