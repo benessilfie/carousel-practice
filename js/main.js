@@ -3,10 +3,9 @@ const carousel = document.querySelector(".carousel");
 const prevButton = carousel.querySelector(".previous-button");
 const nextButton = carousel.querySelector(".next-button");
 const contents = carousel.querySelector(".carousel__contents");
-const dots = Array.from(carousel.querySelectorAll(".carousel__dot"));
-const slides = Array.from(contents.children);
 const dotsContainer = carousel.querySelector(".carousel__dots");
-const slideWidth = slides[0].getBoundingClientRect().width;
+const dots = Array.from(dotsContainer.children);
+const slides = Array.from(contents.children);
 
 nextButton.addEventListener("click", () => {
   const currentSlide = contents.querySelector(".is-selected");
@@ -20,7 +19,7 @@ nextButton.addEventListener("click", () => {
   //Show previous button
   prevButton.removeAttribute("hidden");
 
-  //   Check if there is a next slide, else hide nextSlide Button
+  //   If there is a no next slide hide nextSlide Button
   !nextSlide.nextElementSibling ? nextButton.setAttribute("hidden", true) : true;
 
   // Highlight dot
@@ -42,7 +41,7 @@ prevButton.addEventListener("click", () => {
   // Show next button
   nextButton.removeAttribute("hidden");
 
-  // Check if there is a previous slide, else hide the prevSlide Button
+  // If there is no previous slide hide the prevSlide Button
   !prevSlide.previousElementSibling ? prevButton.setAttribute("hidden", true) : true;
 
   // Highlight dot
@@ -90,10 +89,12 @@ dots.forEach((dot) => {
 });
 
 // Positing the slides with JS
-slides[0].style.left = slideWidth * 0 + "px";
-slides[1].style.left = slideWidth * 1 + "px";
-slides[2].style.left = slideWidth * 2 + "px";
+const slideWidth = slides[0].getBoundingClientRect().width;
+
+slides[0].style.left = `${slideWidth * 0}px`;
+slides[1].style.left = `${slideWidth * 1}px`;
+slides[2].style.left = `${slideWidth * 2}px`;
 
 slides.forEach((slide, index) => {
-  slide.style.left = slideWidth * index + "px";
+  slide.style.left = `${slideWidth * index}px`;
 });
